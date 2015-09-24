@@ -1,6 +1,6 @@
 module.exports = {
-		cookieSecret: 'myblog',
-		db: 'blog',
+		cookieSecret: 'mysport',
+		db: 'sportsstore',
 		host: 'localhost',
 		port: 27017
 };
