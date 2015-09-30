@@ -1,7 +1,7 @@
 var crypto = require('crypto'),
-    User = require('../models/user.js'),
-    Post = require('../models/post.js'),
-    Comment = require('../models/comment.js');
+    User = require('../models/userExpress.js'),
+    Post = require('../models/postExpress.js'),
+    Comment = require('../models/commentExpress.js');
 
 module.exports = function(app) {
   

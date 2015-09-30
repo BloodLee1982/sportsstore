@@ -1,4 +1,6 @@
-var Products = require('../models/products.js');
+var Products = require('../models/products.js'),
+    Order = require('../models/order.js'),
+    Users = require('../models/users.js');
 
 module.exports = function (app) {
 
@@ -19,8 +21,38 @@ module.exports = function (app) {
             if(err) {
                 products = [];
             }
-            res.jsonp(products);
+            res.json(products);
         });
     });
+
+    app.post('/orders', function(req, res) {
+        var newOrder = new Order(req.body);
+
+        newOrder.save(function(err, order) {
+            if(err) {
+                order = [];
+                console.log(err);
+            }
+            res.json(order);
+        });
+    });
+
+    app.get('/orders', function(req, res) {
+        Order.getAll(function(err, orders) {
+            res.json(orders);
+        })
+    });
+
+    app.post('/users/login', function (req, res) {
+        Users.get(req.body.username, req.body.password, function(err, user) {
+            if(user != null) {
+                res.json(true);
+            } else {
+                res.json(false);
+            }
+        });
+
+    });
+
 
 };
